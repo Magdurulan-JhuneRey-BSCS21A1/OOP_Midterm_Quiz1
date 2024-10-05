@@ -27,14 +27,14 @@
         }
     }
 
-    public class Customer
+    public class Customer:Employee
     {
         private string _name;
         private int _age;
         public string Name { get => _name; set => _name = value; }
         public int Age { get => _age; set => _age = value; }
 
-        public Customer(string name, int age)
+        public Customer(string name, int age, string employeeId) : base(employeeId)
         {
             _name = name;
             _age = age;
@@ -44,6 +44,7 @@
         {
             return $"Name: {Name}, Age: {Age}";
         }
+     
     }
 
     public class Employee

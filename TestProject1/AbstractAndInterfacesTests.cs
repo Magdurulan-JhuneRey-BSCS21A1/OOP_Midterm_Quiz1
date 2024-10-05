@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing;
+using ClassLibrary1;
 
 namespace TestProject1
 {
@@ -11,7 +12,7 @@ namespace TestProject1
         public void AbstractShape_Should_Throw_Exception_When_Instantiated()
         {
             // Act & Assert
-            Shape shape = new Shape();  // Should throw exception as Shape is abstract
+                Shape shape = new Shape(); // Should throw exception as Shape is abstract
         }
 
         [TestMethod]
@@ -24,7 +25,7 @@ namespace TestProject1
             var area = circle.Area();
 
             // Assert
-            Assert.AreEqual(28.2743, area, 0.0001);
+            Assert.AreEqual(28.2743, area);
         }
 
         [TestMethod]

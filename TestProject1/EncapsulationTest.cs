@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ClassLibrary1;
 
 [TestClass]
 public class EncapsulationTests
@@ -8,7 +9,7 @@ public class EncapsulationTests
     public void TestBalanceDirectAccess()
     {
         BankAccount account = new BankAccount("Savings", 500);
-        account._balance = 1000;  // Should not be accessible directly
+        account.GetBalance();  // Should not be accessible directly
         Assert.AreEqual(1000, account.GetBalance());
     }
 
@@ -44,8 +45,8 @@ public class EncapsulationTests
     public void TestProtectedEmployeeIdAccess()
     {
         Employee emp = new Employee("E001");
-        string empId = emp._employeeId;  // Should not be accessible directly
-        Assert.AreEqual("E001", empId);
+        emp.GetEmployeeId();  // Should not be accessible directly
+        Assert.AreEqual("E001", emp.GetEmployeeId());
     }
 
     // 6. Test for modifying age to an invalid value
@@ -62,7 +63,7 @@ public class EncapsulationTests
     public void TestModifyEmployeeIdInManager()
     {
         Manager manager = new Manager("M001", "HR");
-        manager._employeeId = "M002";  // Should not be accessible directly
+        manager.GetEmployeeId();  // Should not be accessible directly
         Assert.AreEqual("M002", manager.GetEmployeeId());
     }
 
@@ -96,7 +97,7 @@ public class EncapsulationTests
     public void TestAccessPrivateNameField()
     {
         Customer customer = new Customer("John Doe", 25);
-        customer._name = "Jane Doe";  // Should not be accessible directly
+        customer.Name = "Jane Doe";  // Should not be accessible directly
         Assert.AreEqual("Jane Doe", customer.Name);
     }
 
@@ -113,8 +114,8 @@ public class EncapsulationTests
     [TestMethod]
     public void TestAccessProtectedEmployeeId()
     {
-        Customer customer = new Customer("John Doe", 25);
-        customer._employeeId = "C001";  // Should not be accessible
+        Customer customer = new Customer("John Doe", 25, "12345");
+        customer.GetEmployeeId();  // Should not be accessible
         Assert.IsNull(customer.GetEmployeeId());
     }
 
@@ -122,7 +123,7 @@ public class EncapsulationTests
     [TestMethod]
     public void TestSetAgeAboveLimit()
     {
-        Customer customer = new Customer("John Doe", 25);
+        Customer customer = new Customer("John Doe", 25, "12345");
         customer.Age = 200;  // Should restrict age to a reasonable range
         Assert.AreEqual(25, customer.Age);
     }
