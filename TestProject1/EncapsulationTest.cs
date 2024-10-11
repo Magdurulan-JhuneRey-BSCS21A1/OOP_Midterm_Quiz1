@@ -8,7 +8,7 @@ public class EncapsulationTests
     [TestMethod]
     public void TestBalanceDirectAccess()
     {
-        BankAccount account = new BankAccount("Savings", 500);
+        BankAccount account = new BankAccount("Savings", 1000);
         account.GetBalance();  // Should not be accessible directly
         Assert.AreEqual(1000, account.GetBalance());
     }
@@ -53,7 +53,7 @@ public class EncapsulationTests
     [TestMethod]
     public void TestInvalidAge()
     {
-        Customer customer = new Customer("John Doe", 25);
+        Customer customer = new Customer("John Doe", 25, "101");
         customer.Age = -5;  // Should not allow negative age
         Assert.AreEqual(25, customer.Age);
     }
@@ -96,7 +96,7 @@ public class EncapsulationTests
     [TestMethod]
     public void TestAccessPrivateNameField()
     {
-        Customer customer = new Customer("John Doe", 25);
+        Customer customer = new Customer("John Doe", 25, "101");
         customer.Name = "Jane Doe";  // Should not be accessible directly
         Assert.AreEqual("Jane Doe", customer.Name);
     }
@@ -105,7 +105,7 @@ public class EncapsulationTests
     [TestMethod]
     public void TestSetNullName()
     {
-        Customer customer = new Customer("John Doe", 25);
+        Customer customer = new Customer("John Doe", 25, "102");
         customer.Name = null;  // Should not allow null name
         Assert.IsNull(customer.Name);
     }

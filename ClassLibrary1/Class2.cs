@@ -37,6 +37,27 @@ namespace ClassLibrary1
         {
             return "Generic animal sound";
         }
+        public string Eat()
+        {
+            return "Animal is eating.";
+        }
+    }
+
+    public class Mammal : Animal
+    {
+        
+        public string GiveBirth()
+        {
+            return "Mammal is giving birth.";
+        }
+    }
+
+    public class Human : Mammal
+    {
+        public string Talk()
+        {
+            return "Human is talking.";
+        }
     }
 
 }

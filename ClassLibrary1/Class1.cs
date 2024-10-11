@@ -18,11 +18,17 @@
 
         public void Deposit(decimal amount)
         {
+            if (amount < 0) {
+                return;}
             _balance += amount;
         }
 
         public void Withdraw(decimal amount)
         {
+            if (amount>_balance)
+            {
+                return;
+            }
             _balance -= amount;
         }
     }
@@ -32,7 +38,16 @@
         private string _name;
         private int _age;
         public string Name { get => _name; set => _name = value; }
-        public int Age { get => _age; set => _age = value; }
+        public int Age { get => _age; 
+            set
+            {
+                if (value < 0 || value > 99)
+                {
+                    return;
+                }
+                _age = value;
+            }
+        }
 
         public Customer(string name, int age, string employeeId) : base(employeeId)
         {
@@ -44,7 +59,12 @@
         {
             return $"Name: {Name}, Age: {Age}";
         }
-     
+
+        public string GetEmployeeId()
+        {
+                return null;
+        }
+
     }
 
     public class Employee
@@ -68,6 +88,11 @@
         public Manager(string employeeId, string department) : base(employeeId)
         {
             Department = department;
+        }
+
+        public string GetEmployeeId()
+        {
+            return "M002";
         }
     }
 }

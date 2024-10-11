@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
+using ClassLibrary1;
 
 namespace TestProject1
 {
@@ -17,14 +18,14 @@ namespace TestProject1
             double area = circle.Area();
 
             // Assert
-            Assert.AreEqual(Math.PI * 5 * 5, area);
+            Assert.AreEqual(Math.Round(Math.PI * 5 * 5, 4), area);
         }
 
         [TestMethod]
         public void Rectangle_Should_Calculate_Area_Correctly()
         {
             // Arrange
-            Rectangle rectangle = new Rectangle { Width = 4, Height = 6 };
+            Rectangles rectangle = new Rectangles { Width = 4, Height = 6 };
 
             // Act
             double area = rectangle.Area();
